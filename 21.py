@@ -1,6 +1,7 @@
 import random
 from os import system
 from colorama import Fore as colours
+import argparse
 
 
 numbers = ["Ace", "2", "3", "4", "5", "6", "7",
@@ -86,8 +87,8 @@ def NPC_decision(current, minChance=0.5, smart=True, omniscient=True):
     # if npc is omniscient, it knows what cards are left in the deck
     # if npc is smart, it knows what cards have not been shown (either in player hand or deck)
     if smart or omniscient:
-        remainingCards = mainDeck.listCards()
-
+        remainingCards = mainDeck.listCards() # only available cards
+        # if omniscient they know all
         if not omniscient:
             for p in players:
                 remainingCards += p.cards  # take account unknown player hands
@@ -116,6 +117,13 @@ def NPC_decision(current, minChance=0.5, smart=True, omniscient=True):
         # see if the chance is over threshold
         return True if chanceNotOvershoot >= minChance else False
 
+parser = argparse.ArgumentParser()
+parser.add_argument("-s", "--smart", help="smart mode", action="store_true")
+parser.add_argument("-o", "--omni", help="omniscient", action="store_true")
+args = parser.parse_args()
+
+smart_mode = args.smart or args.omni
+omni_mode = args.omni
 
 # player list, True is human, False is npc
 isPlayer = [True, False, False, False]
@@ -164,7 +172,7 @@ while stop != "":
                     "press enter to stop, type sth to draw card: ") == "" else True
             else:
                 continueDraw = NPC_decision(
-                    players[i].total, minChance=random.uniform(0.5, 0.7))
+                    players[i].total, minChance=random.uniform(0.5, 0.7), smart=smart_mode, omniscient=omni_mode)
 
         print(colours.GREEN +
               f"Player {i+1} has finished the round" + colours.RESET)
