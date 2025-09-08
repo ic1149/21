@@ -3,6 +3,7 @@
 ## How to run
 
 `pip install -r requirements.txt`
+
 `python 21.py`
 
 ### optional flags
@@ -16,4 +17,4 @@ note that smart is forced to on if using omniscient.
 ## Instructions
 
 In this Blackjack game, you are player 1. The others are NPCs.
-In each turn, type something to hit, type nothing (just press enter) to stop.
+In each turn, input something to hit, input nothing (just press enter) to stop.
