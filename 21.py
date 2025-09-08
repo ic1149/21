@@ -181,7 +181,8 @@ while stop != "":
     max = 0
     for i in range(0, len(isPlayer)):
         pTotal = players[i].total
-        if 1 in [v.num for v in players[i].cards] and pTotal <= 11:
+        if "Ace" in [v.num for v in players[i].cards] and pTotal <= 11:
+            print("Ace 11")
             pTotal += 10
             # if there is an Ace, and it being value 11 doesn't overshoot
 
