@@ -2,7 +2,7 @@
 
 ## How to run
 
-`pip install requirements.txt`
+`pip install -r requirements.txt`
 `python 21.py`
 
 ### optional flags
