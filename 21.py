@@ -69,8 +69,6 @@ class hand:
     def addCard(self, card, isFirst=False):
         self.cards += [card]  # add card to list
         self.total += getValue(card)  # increase card count total
-        if isFirst and self.total == 1:  # base card ace is 11 instead of 1
-            self.total += 10
 
     def clear(self):  # reset after each round
         self.cards = []
@@ -160,7 +158,7 @@ while stop != "":
 
             if players[i].total > 21:
                 print(colours.RED +
-                      f"Player {i+1} has overshot!" + colours.RESET)
+                      f"Player {i+1} has overshot! (total {players[i].total})" + colours.RESET)
                 for c in players[i].cards:
                     print(c.formatted, end=" ")
 
