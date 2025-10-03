@@ -167,7 +167,7 @@ while stop != "":
 
             if isPlayer[i]:
                 continueDraw = False if input(
-                    "press enter to stop, type sth to draw card: ") == "" else True
+                    "Press enter to stand, type sth to hit: ") == "" else True
             else:
                 continueDraw = NPC_decision(
                     players[i].total, minChance=random.uniform(0.5, 0.7), smart=smart_mode, omniscient=omni_mode)
@@ -198,4 +198,4 @@ while stop != "":
 
     print(colours.YELLOW + f"winners: {winners}" + colours.RESET)
 
-    stop = input("type sth to continue, enter to stop: ")
+    stop = input("Type sth to continue, enter to stop: ")
