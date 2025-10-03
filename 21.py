@@ -159,8 +159,8 @@ while stop != "":
             if players[i].total > 21:
                 print(colours.RED +
                       f"Player {i+1} has overshot! (total {players[i].total})" + colours.RESET)
-                for c in players[i].cards:
-                    print(c.formatted, end=" ")
+                # for c in players[i].cards:
+                #     print(c.formatted, end=" ")
 
                 input("")
                 break
