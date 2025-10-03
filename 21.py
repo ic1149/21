@@ -6,7 +6,7 @@ import argparse
 
 numbers = ["Ace", "2", "3", "4", "5", "6", "7",
            "8", "9", "10", "Jack", "Queen", "King"]
-flowers = ["diamonds", "clubs", "hearts", "spades"]
+flowers = ["diamonds", "clubs", "hearts", "spades"]  # suits
 
 
 class newDeck:
@@ -14,6 +14,8 @@ class newDeck:
         self.cards = [[flower] for flower in flowers]
         for flower in self.cards:
             flower += [card(number, flower[0]) for number in numbers]
+        # 2D array of cards, self.cards[flower][number]
+        
 
         self.cardCount = 52
 
@@ -31,6 +33,7 @@ class newDeck:
         return listOfCards
 
     def pick(self):
+        # pick a random card
         flowerEmpty = True
         while flowerEmpty:
             pickFlower = random.choice(self.cards)  # pick random flower
@@ -68,7 +71,7 @@ class hand:
 
     def addCard(self, card, isFirst=False):
         self.cards += [card]  # add card to list
-        self.total += getValue(card)  # increase card count total
+        self.total += getValue(card)  # increase total
 
     def clear(self):  # reset after each round
         self.cards = []
@@ -76,6 +79,7 @@ class hand:
 
 
 def getValue(card):
+    # get numerical value of the card
     value = numbers.index(card.num) + 1
     value = 10 if value > 10 else value
     return value
@@ -162,7 +166,6 @@ while stop != "":
                 # for c in players[i].cards:
                 #     print(c.formatted, end=" ")
 
-                input("")
                 break
 
             if isPlayer[i]:
@@ -177,6 +180,7 @@ while stop != "":
 
     winners = []
     max = 0
+    # find the player with maximum points
     for i in range(0, len(isPlayer)):
         pTotal = players[i].total
         if "Ace" in [v.num for v in players[i].cards] and pTotal <= 11:
